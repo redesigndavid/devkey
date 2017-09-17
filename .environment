@@ -1,0 +1,11 @@
+
+
+
+setenv PROJ devkey 
+setenv PROJHOME "~/projects/$PROJ"
+
+setenv PATH $PROJHOME/bin:$PATH
+source $PROJHOME/.aliases
+cd $PROJHOME
+
+

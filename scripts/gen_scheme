@@ -1,0 +1,199 @@
+#!/usr/bin/env python
+import uuid
+_newkey = """$Comp
+L MX1A S{sid}
+U 1 1 {id}
+P {x} {y}
+F 0 "S{sid}" H {xx} {yyy} 60  0000 C CNN
+F 1 "KYSW" H {x} {yy} 60  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_Matias_Quiet" H {x} {y} 30  0001 C CNN
+F 3 "" H {x} {y} 60  0000 C CNN
+    1    {x} {y}
+    1    0    0    -1
+$EndComp"""
+_newconn = """Connection ~ {x} {y}"""
+_newdiod = """$Comp
+L D S{did}
+U 1 1 {id}
+P {x} {y}
+F 0 "D{did}" H {x} {yy} 50  0000 C CNN
+F 1 "DIOD" H {x} {yyy} 50  0000 C CNN
+F 2 "Keyboard:CHERRY_MX_DIODE" H {x} {y} 30  0001 C CNN
+F 3 "" H {x} {y} 60  0000 C CNN
+    1    {x} {y}
+    1    0    0    -1
+$EndComp"""
+
+_newwire = """Wire Wire Line
+    6050 1500 6050 5350"""
+_newwire = """Wire Wire Line
+    {x1} {y1} {x2} {y2}"""
+"""$Comp
+L MX1A S2
+U 1 1 572CA53F
+P 2600 2050
+F 0 "S2" H 2450 2300 60  0000 C CNN
+F 1 "MX1A" H 2600 2150 60  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_Matias_Quiet" H 2600 2050 60  0001 C CNN
+F 3 "" H 2600 2050 60  0000 C CNN
+    1    2600 2050
+    1    0    0    -1
+$EndComp"""
+
+_main = """EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:alps1a
+LIBS:mx1a
+LIBS:matias-cache
+EELAYER 25 0
+EELAYER END
+$Descr A2 23386 16535
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+%s
+$EndSCHEMATC"""
+
+
+def main():
+    xstart = 3000
+    ystart = 3050
+    sid = 1
+    did = 1
+    text = []
+    for row in range(7):
+        for col in range(5):
+
+            uid = uuid.uuid4().hex[-10:]
+
+            x = xstart + (row * 1000)
+            y = ystart + (col * 1300)
+            xx = x + 100
+            yy = y + 100
+            yyy = y + 250
+            secoff = 400
+            didoff = 500
+
+            text.append(_newkey.format(
+                x=x,
+                y=y,
+                xx=xx,
+                yy=yy,
+                yyy=yyy,
+                sid='F%s' % sid,
+                id=uid))
+
+            text.append(_newkey.format(
+                x=x,
+                y=y+secoff,
+                xx=xx,
+                yy=yy+secoff,
+                yyy=yyy+secoff,
+                sid='B%s' % sid,
+                id=uid))
+            sid += 1
+
+            text.append(_newdiod.format(
+                x=x,
+                y=y+didoff,
+                xx=xx,
+                yy=yy+didoff,
+                yyy=yyy+didoff-350,
+                did=did,
+                id=uid))
+
+            did += 1
+            text.append(_newwire.format(
+                x1=x - 200, y1=y,
+                x2=x - 300, y2=y))
+            text.append(_newwire.format(
+                x1=x - 200, y1=y - secoff,
+                x2=x - 300, y2=y - secoff))
+            text.append(_newwire.format(
+                x1=x - 300, y1=y - secoff,
+                x2=x - 300, y2=y))
+            text.append(_newwire.format(
+                x1=x - 300, y1=y - secoff,
+                x2=x - 300, y2=y - secoff - 150))
+            text.append(_newwire.format(
+                x1=x - 300, y1=y - secoff - 150,
+                x2=x + 700, y2=y - secoff - 150))
+
+            text.append(_newwire.format(
+                x1=x+200, y1=y-150,
+                x2=x+300, y2=y-150))
+            text.append(_newwire.format(
+                x1=x+200, y1=y+250,
+                x2=x+300, y2=y+250))
+            text.append(_newwire.format(
+                x1=x+300, y1=y+500,
+                x2=x+150, y2=y+500))
+
+            text.append(_newwire.format(
+                x1=x+300, y1=y+500,
+                x2=x+300, y2=y+250))
+
+            text.append(_newwire.format(
+                x1=x+300, y1=y+250,
+                x2=x+300, y2=y-150))
+
+            text.append(_newwire.format(
+                x1=x-400, y1=y+500,
+                x2=x-150, y2=y+500))
+
+            text.append(_newwire.format(
+                x1=x-400, y1=y+500,
+                x2=x-400, y2=y+1800))
+
+            text.append(_newconn.format(
+                x=x - 300, y=y-secoff))
+
+            text.append(_newconn.format(
+                x=x + 700, y=y-secoff-150))
+
+            text.append(_newconn.format(
+                x=x+300, y=y+250))
+
+            text.append(_newconn.format(
+                x=x-400, y=y+500))
+
+    print _main % '\n'.join(text)
+
+if __name__ == '__main__':
+    main()
