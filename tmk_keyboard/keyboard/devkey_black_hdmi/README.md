@@ -1,6 +1,6 @@
 devkey black 
 ======================
-Refer to build [../../tmk_core/doc/build.md](tmk_core/doc/build.md) for build
+Refer to build [tmk_core/doc/build.md](../../tmk_core/doc/build.md) for build
 instructions.
 
 
