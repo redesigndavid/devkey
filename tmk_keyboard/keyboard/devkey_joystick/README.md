@@ -1,8 +1,20 @@
 devkey joystick 
 ======================
+A friend of mine wanted a keyboard with a [hori hayabusa joystick](https://www.focusattack.com/hori-hayabusa-joystick/).  I made it happen.
+
+I had to add an extra row to for the 4 keys connected to the joystick.
+
+
+build instructions
+------------------
 Refer to build [tmk_core/doc/build.md](../../tmk_core/doc/build.md) for build
 instructions.
 
+![joystick hdmi devkey](../../../images/joystick.jpg)
+
+
+keyboard layers
+---------------
 
 #### default layer
     .---------------------------.                .---------------------------.        
@@ -15,7 +27,7 @@ instructions.
     |LST|  Z|  X|  C|  V|  B|ESC|                |BSP|  N|  M|  ,|  .|  /|RST|
     `---------------------------'                `---------------------------'
                 |LAT|WIN|FN0|                        |SPC|ENT|FN1|            
-                `-----------'                        `------------'            
+                `-----------'                        `-----------'            
 
 #### symbols and functions layer 
 When FN0 is tapped, it produced the 'space' key.  When it is pressed and held,

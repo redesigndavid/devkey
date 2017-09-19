@@ -1,9 +1,19 @@
 devkey black 
 ======================
+Black keys and black pcb of the devkey board.  This uses an hdmi to connect
+the two halves.
+
+build instructions
+------------------
+
 Refer to build [tmk_core/doc/build.md](../../tmk_core/doc/build.md) for build
 instructions.
 
 ![black hdmi devkey](../../../images/blackhdmi.jpg)
+
+keyboard layers
+---------------
+
 #### default layer
     .---------------------------.        .---------------------------.        
     |  `|  1|  2|  3|  4|  5| PU|        |  =|  6|  7|  8|  9|  0|  -|
