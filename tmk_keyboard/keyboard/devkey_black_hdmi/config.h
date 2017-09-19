@@ -23,13 +23,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6060
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    dmarte 
-#define PRODUCT         devkey 
-#define DESCRIPTION     t.m.k. keyboard firmware for devkey 
+#define MANUFACTURER    dmarte
+#define PRODUCT         devkey_black
+#define DESCRIPTION     t.m.k. keyboard firmware for devkey
 
 /* key matrix size */
 #define MATRIX_ROWS 14
-#define MATRIX_COLS 6
+#define MATRIX_COLS 5
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
